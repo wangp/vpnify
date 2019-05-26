@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Drop all outgoing traffic from our namespace
 iptables -I FORWARD -i "$VETH0" -j DROP
 # Expect for traffic going to your VPN server

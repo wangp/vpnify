@@ -1,8 +1,10 @@
+#!/bin/sh
+
 # Try to find a second routing table
-TABLE="$(egrep '^1\s+\w+' /etc/iproute2/rt_tables | sed -E 's/1\s+//g')"
+TABLE="$(grep -E '^1\s+\w+' /etc/iproute2/rt_tables | sed -E 's/1\s+//g')"
 
 # Create it if it doesn't exist
-if [[ -z "$TABLE" ]]; then
+if [ -z "$TABLE" ]; then
 	TABLE=rt2
 	echo '1 rt2' >> /etc/iproute2/rt_tables
 fi
